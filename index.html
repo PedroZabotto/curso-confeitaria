@@ -5,29 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Curso de Confeitaria</title>
   <style>
-    :root{--bg:#0f1724;--card:#0b1220;--muted:#9aa4b2;--accent:#f472b6}
+    :root{--bg:#f9fafb;--card:#ffffff;--muted:#555;--accent:#ec4899}
     *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;background:linear-gradient(180deg,#071127 0%, #071127 40%, #051023 100%);color:#e6eef6}
-    header{background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));backdrop-filter: blur(6px);border-bottom:1px solid rgba(255,255,255,0.03);position:sticky;top:0;z-index:50}
-    .container{max-width:1100px;margin:0 auto;padding:28px}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;background:var(--bg);color:#111}
+    header{background:var(--card);border-bottom:1px solid #ddd;position:sticky;top:0;z-index:50}
+    .container{max-width:1100px;margin:0 auto;padding:20px}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
     .brand{display:flex;gap:12px;align-items:center}
-    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#ec4899);display:grid;place-items:center;font-weight:700;color:#fff}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#f472b6);display:grid;place-items:center;font-weight:700;color:#fff}
     nav ul{display:flex;gap:10px;list-style:none;padding:0;margin:0}
-    nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px;font-weight:600}
-    nav a.active, nav a:hover{color:#e6eef6;background:rgba(255,255,255,0.03)}
-    main{padding:40px 0}
-    .grid{display:grid;grid-template-columns:1fr 340px;gap:28px}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:22px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
-    h1,h2,h3,h4{margin-top:0}
-    p.lead{margin:0;color:var(--muted)}
-    .slide{margin-top:18px;padding:18px;border-radius:10px;background:linear-gradient(180deg,#051021,#061426);border:1px solid rgba(255,255,255,0.02)}
-    .slide img{width:100%;border-radius:12px;margin:14px 0}
+    nav a{color:#333;text-decoration:none;padding:8px 12px;border-radius:6px;font-weight:600}
+    nav a.active, nav a:hover{background:#f3f4f6}
+    main{padding:30px 0}
+    .card{background:var(--card);padding:20px;border-radius:12px;border:1px solid #ddd}
+    h1,h2,h3{margin-top:0}
+    p.lead{color:var(--muted)}
+    .tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+    .tab{padding:10px 16px;border-radius:8px;border:1px solid #ddd;background:#f3f4f6;cursor:pointer;font-weight:600}
+    .tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .tab-content{display:none}
+    .tab-content.active{display:block}
+    .carousel{position:relative;overflow:hidden;border-radius:12px;margin-top:14px}
+    .carousel img{width:100%;display:none;border-radius:12px}
+    .carousel img.active{display:block}
+    .carousel-controls{position:absolute;top:50%;left:0;right:0;display:flex;justify-content:space-between;transform:translateY(-50%);padding:0 10px}
+    .carousel button{background:rgba(0,0,0,0.4);border:none;color:#fff;padding:8px 12px;border-radius:6px;cursor:pointer}
     .authors-list{display:flex;flex-direction:column;gap:8px}
     .author{display:flex;align-items:center;gap:12px}
     .avatar{width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,#34d399,#60a5fa);display:grid;place-items:center;font-weight:700;color:#052028}
+    .progress-bar{background:#e5e7eb;border-radius:10px;overflow:hidden;height:18px;margin:8px 0}
+    .progress{background:var(--accent);height:100%;width:40%;transition:width .3s}
     footer{margin-top:28px;text-align:center;color:var(--muted);font-size:13px}
-    @media (max-width:900px){.grid{grid-template-columns:1fr}nav ul{display:none}.container{padding:18px}}
   </style>
 </head>
 <body>
@@ -42,98 +50,123 @@
       </div>
       <nav>
         <ul>
-          <li><a href="#publico" class="active">Público-alvo</a></li>
-          <li><a href="#objetivos">Objetivos</a></li>
-          <li><a href="#conteudos">Conteúdos</a></li>
-          <li><a href="#atividades">Atividades</a></li>
-          <li><a href="#avaliacao">Avaliação</a></li>
-          <li><a href="#investimento">Investimento</a></li>
-          <li><a href="#autores">Autores</a></li>
+          <li><a href="#" class="active">Início</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main class="container">
-    <div class="grid">
-      <section>
-        <div class="card" id="publico">
-          <h2>Público-alvo</h2>
-          <p>A principal procura do nosso curso é por futuros donos de confeitarias e donas de casa, mas aceitamos todos com o mesmo carinho!</p>
-          <img src="https://source.unsplash.com/800x400/?bakery,people" alt="Alunos de confeitaria" />
-        </div>
+    <div class="card">
+      <div class="tabs">
+        <div class="tab active" data-tab="publico">Público-alvo</div>
+        <div class="tab" data-tab="objetivos">Objetivos</div>
+        <div class="tab" data-tab="conteudos">Conteúdos</div>
+        <div class="tab" data-tab="atividades">Atividades</div>
+        <div class="tab" data-tab="avaliacao">Avaliação</div>
+        <div class="tab" data-tab="investimento">Investimento</div>
+        <div class="tab" data-tab="progresso">Progresso</div>
+        <div class="tab" data-tab="autores">Autores</div>
+      </div>
 
-        <div class="card" id="objetivos" style="margin-top:18px">
-          <h2>Objetivos</h2>
-          <p>Ensinar os conceitos da confeitaria e receitas deliciosas; incentivar a criatividade para criação de receitas próprias e crescimento na vida de confeiteiro.</p>
-          <img src="https://source.unsplash.com/800x400/?cake,creativity" alt="Objetivos do curso" />
+      <div id="publico" class="tab-content active">
+        <h2>Público-alvo</h2>
+        <p>A principal procura do nosso curso é por futuros donos de confeitarias e donas de casa, mas aceitamos todos com o mesmo carinho!</p>
+        <div class="carousel">
+          <img src="https://picsum.photos/800/300?random=11" alt="Confeitaria" class="active"/>
+          <img src="https://picsum.photos/800/300?random=12" alt="Alunos"/>
+          <img src="https://picsum.photos/800/300?random=13" alt="Aula prática"/>
+          <div class="carousel-controls">
+            <button id="prev">❮</button>
+            <button id="next">❯</button>
+          </div>
         </div>
+      </div>
 
-        <div class="card" id="conteudos" style="margin-top:18px">
-          <h2>Conteúdos em etapas</h2>
+      <div id="objetivos" class="tab-content">
+        <h2>Objetivos</h2>
+        <p>Ensinar os conceitos da confeitaria e receitas deliciosas; incentivar a criatividade para criação de receitas próprias e crescimento na vida de confeiteiro.</p>
+        <img src="https://picsum.photos/800/300?random=2" alt="Objetivos do curso" style="width:100%;border-radius:10px"/>
+      </div>
+
+      <div id="conteudos" class="tab-content">
+        <h2>Conteúdos em etapas</h2>
+        <ul>
+          <li>Utensílios</li>
+          <li>Vestimentas</li>
+          <li>Mise en place (ingredientes)</li>
+          <li>Modo de preparo</li>
+          <li>Apresentação de pratos</li>
+          <li>Como vender seu produto</li>
+        </ul>
+        <img src="https://picsum.photos/800/300?random=3" alt="Conteúdos" style="width:100%;border-radius:10px"/>
+      </div>
+
+      <div id="atividades" class="tab-content">
+        <h2>Atividades</h2>
+        <p>O curso funciona por meio de aulas gravadas, textos teóricos e módulos de receitas (básico, intermediário e avançado).</p>
+        <div style="margin-top:14px">
+          <h3>Módulos</h3>
           <ul>
-            <li>Utensílios</li>
-            <li>Vestimentas</li>
-            <li>Mise en place (ingredientes)</li>
-            <li>Modo de preparo</li>
-            <li>Apresentação de pratos</li>
-            <li>Como vender seu produto</li>
+            <li><strong>Básico:</strong> bolos simples, utensílios e mise en place</li>
+            <li><strong>Intermediário:</strong> recheios, coberturas e decoração</li>
+            <li><strong>Avançado:</strong> sobremesas elaboradas e técnicas de vendas</li>
           </ul>
-          <img src="https://source.unsplash.com/800x400/?ingredients,baking" alt="Utensílios e ingredientes" />
         </div>
+        <img src="https://picsum.photos/800/300?random=4" alt="Atividades" style="width:100%;border-radius:10px"/>
+      </div>
 
-        <div class="card" id="atividades" style="margin-top:18px">
-          <h2>Atividades</h2>
-          <p>Aulas gravadas, textos teóricos, módulos de receitas em níveis (básico, intermediário, avançado).</p>
-          <img src="https://source.unsplash.com/800x400/?cooking,class" alt="Atividades do curso" />
+      <div id="avaliacao" class="tab-content">
+        <h2>Formas de Avaliação</h2>
+        <p>Fóruns online para dúvidas e melhorias; frequência, empenho e feedbacks dos alunos; autoavaliação para evolução contínua.</p>
+        <img src="https://picsum.photos/800/300?random=5" alt="Avaliação" style="width:100%;border-radius:10px"/>
+      </div>
+
+      <div id="investimento" class="tab-content">
+        <h2>Investimento</h2>
+        <p>O valor do curso é <strong>R$ 260,00</strong>, pago por débito, crédito, boleto ou Pix.</p>
+        <img src="https://picsum.photos/800/300?random=6" alt="Investimento" style="width:100%;border-radius:10px"/>
+      </div>
+
+      <div id="progresso" class="tab-content">
+        <h2>Progresso do Aluno</h2>
+        <p>Acompanhe seu avanço nos módulos:</p>
+        <div>
+          <p>Básico</p>
+          <div class="progress-bar"><div class="progress" style="width:80%"></div></div>
+          <p>Intermediário</p>
+          <div class="progress-bar"><div class="progress" style="width:40%"></div></div>
+          <p>Avançado</p>
+          <div class="progress-bar"><div class="progress" style="width:10%"></div></div>
         </div>
+      </div>
 
-        <div class="card" id="avaliacao" style="margin-top:18px">
-          <h2>Formas de Avaliação</h2>
-          <p>Fóruns online para dúvidas e melhorias; frequência, empenho e feedbacks dos alunos; autoavaliação para evolução contínua.</p>
-          <img src="https://source.unsplash.com/800x400/?online,feedback" alt="Avaliação do curso" />
-        </div>
-
-        <div class="card" id="investimento" style="margin-top:18px">
-          <h2>Investimento</h2>
-          <p>O valor do curso é <strong>R$ 260,00</strong>, pago por débito, crédito, boleto ou Pix.</p>
-          <img src="https://source.unsplash.com/800x400/?money,payment" alt="Investimento" />
-        </div>
-      </section>
-
-      <aside>
-        <div class="card" id="autores">
-          <h3>Autores</h3>
-          <div class="authors-list">
-            <div class="author">
-              <div class="avatar">GM</div>
-              <div>
-                <div style="font-weight:700">Giovana Mathias</div>
-                <div style="font-size:13px;color:var(--muted)">Autora</div>
-              </div>
+      <div id="autores" class="tab-content">
+        <h2>Autores</h2>
+        <div class="authors-list">
+          <div class="author">
+            <div class="avatar">GM</div>
+            <div>
+              <div style="font-weight:700">Giovana Mathias</div>
+              <div style="font-size:13px;color:var(--muted)">Autor</div>
             </div>
-            <div class="author">
-              <div class="avatar">JL</div>
-              <div>
-                <div style="font-weight:700">Jéssica Lopes</div>
-                <div style="font-size:13px;color:var(--muted)">Autora</div>
-              </div>
+          </div>
+          <div class="author">
+            <div class="avatar">JL</div>
+            <div>
+              <div style="font-weight:700">Jéssica Lopes</div>
+              <div style="font-size:13px;color:var(--muted)">Autor</div>
             </div>
-            <div class="author">
-              <div class="avatar">PH</div>
-              <div>
-                <div style="font-weight:700">Pedro Henrique Zaboto Aporta</div>
-                <div style="font-size:13px;color:var(--muted)">Autor adicionado</div>
-              </div>
+          </div>
+          <div class="author">
+            <div class="avatar">PH</div>
+            <div>
+              <div style="font-weight:700">Pedro Henrique Zaboto Aporta</div>
+              <div style="font-size:13px;color:var(--muted)">Autor</div>
             </div>
           </div>
         </div>
-
-        <div class="card" style="margin-top:18px">
-          <h4>Sobre o curso</h4>
-          <p style="color:var(--muted);font-size:14px;margin:8px 0 0 0">Este curso é 100% online e fornece certificado ao final. Ideal para quem quer aprender confeitaria de forma prática e criativa.</p>
-        </div>
-      </aside>
+      </div>
     </div>
 
     <footer>
@@ -142,15 +175,44 @@
   </main>
 
   <script>
-    function downloadHTML(){
-      const html = `<!doctype html>\n${document.documentElement.outerHTML}`;
-      const blob = new Blob([html], {type: 'text/html'});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url; a.download = 'curso_confeitaria.html';
-      document.body.appendChild(a); a.click(); a.remove();
-      URL.revokeObjectURL(url);
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.tab).classList.add('active');
+      });
+    });
+
+    // Carrossel
+    const carousel = document.querySelector('.carousel');
+    const images = carousel.querySelectorAll('img');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+    let index = 0;
+
+    function showImage(i){
+      images.forEach(img => img.classList.remove('active'));
+      images[i].classList.add('active');
     }
+
+    prevBtn.addEventListener('click',()=>{
+      index = (index - 1 + images.length) % images.length;
+      showImage(index);
+    });
+
+    nextBtn.addEventListener('click',()=>{
+      index = (index + 1) % images.length;
+      showImage(index);
+    });
+
+    setInterval(()=>{
+      index = (index + 1) % images.length;
+      showImage(index);
+    },4000);
   </script>
 </body>
 </html>
