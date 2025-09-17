@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Curso de Confeitaria</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3515/3515261.png" type="image/png">
   <style>
     :root{--bg:#f9fafb;--card:#ffffff;--muted:#555;--accent:#ec4899}
     *{box-sizing:border-box}
@@ -21,10 +22,11 @@
     h1,h2,h3{margin-top:0}
     p.lead{color:var(--muted)}
     .tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
-    .tab{padding:10px 16px;border-radius:8px;border:1px solid #ddd;background:#f3f4f6;cursor:pointer;font-weight:600}
+    .tab{padding:10px 16px;border-radius:8px;border:1px solid #ddd;background:#f3f4f6;cursor:pointer;font-weight:600;display:flex;align-items:center;gap:6px}
     .tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
     .tab-content{display:none}
     .tab-content.active{display:block}
+    .tab i{font-size:16px}
     .carousel{position:relative;overflow:hidden;border-radius:12px;margin-top:14px}
     .carousel img{width:100%;display:none;border-radius:12px}
     .carousel img.active{display:block}
@@ -37,6 +39,7 @@
     .progress{background:var(--accent);height:100%;width:40%;transition:width .3s}
     footer{margin-top:28px;text-align:center;color:var(--muted);font-size:13px}
   </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-yH3Hno0RvrRZtGJPD7WvyaManIeZDV4xQdlqzTeWY5AvzkdxlIo0NGdisz8Iky3Uczdlz7YT1Do1B4ezgmO6+g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
   <header>
@@ -59,23 +62,23 @@
   <main class="container">
     <div class="card">
       <div class="tabs">
-        <div class="tab active" data-tab="publico">Público-alvo</div>
-        <div class="tab" data-tab="objetivos">Objetivos</div>
-        <div class="tab" data-tab="conteudos">Conteúdos</div>
-        <div class="tab" data-tab="atividades">Atividades</div>
-        <div class="tab" data-tab="avaliacao">Avaliação</div>
-        <div class="tab" data-tab="investimento">Investimento</div>
-        <div class="tab" data-tab="progresso">Progresso</div>
-        <div class="tab" data-tab="autores">Autores</div>
+        <div class="tab active" data-tab="publico"><i class="fa-solid fa-users"></i>Público-alvo</div>
+        <div class="tab" data-tab="objetivos"><i class="fa-solid fa-bullseye"></i>Objetivos</div>
+        <div class="tab" data-tab="conteudos"><i class="fa-solid fa-book-open"></i>Conteúdos</div>
+        <div class="tab" data-tab="atividades"><i class="fa-solid fa-list-check"></i>Atividades</div>
+        <div class="tab" data-tab="avaliacao"><i class="fa-solid fa-clipboard-check"></i>Avaliação</div>
+        <div class="tab" data-tab="investimento"><i class="fa-solid fa-coins"></i>Investimento</div>
+        <div class="tab" data-tab="progresso"><i class="fa-solid fa-chart-line"></i>Progresso</div>
+        <div class="tab" data-tab="autores"><i class="fa-solid fa-pen-nib"></i>Autores</div>
       </div>
 
       <div id="publico" class="tab-content active">
-        <h2>Público-alvo</h2>
+        <h2><i class="fa-solid fa-users"></i> Público-alvo</h2>
         <p>A principal procura do nosso curso é por futuros donos de confeitarias e donas de casa, mas aceitamos todos com o mesmo carinho!</p>
         <div class="carousel">
-          <img src="https://picsum.photos/800/300?random=11" alt="Confeitaria" class="active"/>
-          <img src="https://picsum.photos/800/300?random=12" alt="Alunos"/>
-          <img src="https://picsum.photos/800/300?random=13" alt="Aula prática"/>
+          <img src="https://source.unsplash.com/800x300/?bakery" alt="Confeitaria" class="active"/>
+          <img src="https://source.unsplash.com/800x300/?pastry" alt="Doces e sobremesas"/>
+          <img src="https://source.unsplash.com/800x300/?cake" alt="Bolo confeitado"/>
           <div class="carousel-controls">
             <button id="prev">❮</button>
             <button id="next">❯</button>
@@ -84,13 +87,13 @@
       </div>
 
       <div id="objetivos" class="tab-content">
-        <h2>Objetivos</h2>
+        <h2><i class="fa-solid fa-bullseye"></i> Objetivos</h2>
         <p>Ensinar os conceitos da confeitaria e receitas deliciosas; incentivar a criatividade para criação de receitas próprias e crescimento na vida de confeiteiro.</p>
-        <img src="https://picsum.photos/800/300?random=2" alt="Objetivos do curso" style="width:100%;border-radius:10px"/>
+        <img src="https://source.unsplash.com/800x300/?cupcake" alt="Objetivos do curso" style="width:100%;border-radius:10px"/>
       </div>
 
       <div id="conteudos" class="tab-content">
-        <h2>Conteúdos em etapas</h2>
+        <h2><i class="fa-solid fa-book-open"></i> Conteúdos em etapas</h2>
         <ul>
           <li>Utensílios</li>
           <li>Vestimentas</li>
@@ -99,11 +102,11 @@
           <li>Apresentação de pratos</li>
           <li>Como vender seu produto</li>
         </ul>
-        <img src="https://picsum.photos/800/300?random=3" alt="Conteúdos" style="width:100%;border-radius:10px"/>
+        <img src="https://source.unsplash.com/800x300/?baking" alt="Conteúdos" style="width:100%;border-radius:10px"/>
       </div>
 
       <div id="atividades" class="tab-content">
-        <h2>Atividades</h2>
+        <h2><i class="fa-solid fa-list-check"></i> Atividades</h2>
         <p>O curso funciona por meio de aulas gravadas, textos teóricos e módulos de receitas (básico, intermediário e avançado).</p>
         <div style="margin-top:14px">
           <h3>Módulos</h3>
@@ -113,23 +116,23 @@
             <li><strong>Avançado:</strong> sobremesas elaboradas e técnicas de vendas</li>
           </ul>
         </div>
-        <img src="https://picsum.photos/800/300?random=4" alt="Atividades" style="width:100%;border-radius:10px"/>
+        <img src="https://source.unsplash.com/800x300/?cookies" alt="Atividades" style="width:100%;border-radius:10px"/>
       </div>
 
       <div id="avaliacao" class="tab-content">
-        <h2>Formas de Avaliação</h2>
+        <h2><i class="fa-solid fa-clipboard-check"></i> Formas de Avaliação</h2>
         <p>Fóruns online para dúvidas e melhorias; frequência, empenho e feedbacks dos alunos; autoavaliação para evolução contínua.</p>
-        <img src="https://picsum.photos/800/300?random=5" alt="Avaliação" style="width:100%;border-radius:10px"/>
+        <img src="https://source.unsplash.com/800x300/?students,baking" alt="Avaliação" style="width:100%;border-radius:10px"/>
       </div>
 
       <div id="investimento" class="tab-content">
-        <h2>Investimento</h2>
+        <h2><i class="fa-solid fa-coins"></i> Investimento</h2>
         <p>O valor do curso é <strong>R$ 260,00</strong>, pago por débito, crédito, boleto ou Pix.</p>
-        <img src="https://picsum.photos/800/300?random=6" alt="Investimento" style="width:100%;border-radius:10px"/>
+        <img src="https://source.unsplash.com/800x300/?dessert,coffee" alt="Investimento" style="width:100%;border-radius:10px"/>
       </div>
 
       <div id="progresso" class="tab-content">
-        <h2>Progresso do Aluno</h2>
+        <h2><i class="fa-solid fa-chart-line"></i> Progresso do Aluno</h2>
         <p>Acompanhe seu avanço nos módulos:</p>
         <div>
           <p>Básico</p>
@@ -142,7 +145,7 @@
       </div>
 
       <div id="autores" class="tab-content">
-        <h2>Autores</h2>
+        <h2><i class="fa-solid fa-pen-nib"></i> Autores</h2>
         <div class="authors-list">
           <div class="author">
             <div class="avatar">GM</div>
