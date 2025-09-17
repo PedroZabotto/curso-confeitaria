@@ -27,13 +27,15 @@
     .nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
     .brand{display:flex;gap:12px;align-items:center}
     .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#f472b6);display:grid;place-items:center;font-weight:700;color:#fff}
-    nav ul{display:flex;gap:10px;list-style:none;padding:0;margin:0}
+    nav ul{display:flex;gap:10px;list-style:none;padding:0;margin:0;align-items:center}
     nav a{color:var(--text);text-decoration:none;padding:8px 12px;border-radius:6px;font-weight:600;transition:background .3s}
     nav a.active, nav a:hover{background:#f3f4f6}
     body.dark nav a.active, body.dark nav a:hover{background:#374151}
     .menu-toggle{display:none;flex-direction:column;gap:4px;cursor:pointer}
     .menu-toggle span{width:24px;height:3px;background:var(--text);border-radius:3px;transition:background .3s}
     .dark-toggle{cursor:pointer;border:none;background:var(--accent);color:#fff;padding:6px 12px;border-radius:6px;font-weight:600;margin-left:10px}
+    .cta-nav{background:var(--accent);color:#fff;padding:8px 14px;border-radius:8px;font-weight:600;text-decoration:none;margin-left:10px;transition:background .3s;cursor:pointer}
+    .cta-nav:hover{background:#db2777}
     main{padding:30px 0}
     .card{background:var(--card);padding:20px;border-radius:12px;border:1px solid #ddd;transition:background .4s}
     h1,h2,h3{margin-top:0}
@@ -50,7 +52,20 @@
     .avatar{width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,#34d399,#60a5fa);display:grid;place-items:center;font-weight:700;color:#052028}
     .progress-bar{background:#e5e7eb;border-radius:10px;overflow:hidden;height:18px;margin:8px 0}
     .progress{background:var(--accent);height:100%;width:40%;transition:width .3s}
+    .cta-button{display:inline-block;margin-top:18px;padding:12px 20px;background:var(--accent);color:#fff;font-weight:600;border-radius:8px;text-decoration:none;transition:background .3s;cursor:pointer}
+    .cta-button:hover{background:#db2777}
     footer{margin-top:28px;text-align:center;color:var(--muted);font-size:13px}
+
+    /* Modal */
+    .modal{display:none;position:fixed;z-index:100;left:0;top:0;width:100%;height:100%;overflow:auto;background:rgba(0,0,0,0.6)}
+    .modal-content{background:var(--card);margin:10% auto;padding:20px;border-radius:12px;max-width:400px;color:var(--text)}
+    .modal-content h2{margin-top:0}
+    .close{color:var(--muted);float:right;font-size:22px;font-weight:bold;cursor:pointer}
+    .modal form{display:flex;flex-direction:column;gap:12px;margin-top:10px}
+    .modal input{padding:10px;border:1px solid #ccc;border-radius:6px}
+    .submit-btn{background:var(--accent);color:#fff;padding:10px;border:none;border-radius:6px;font-weight:600;cursor:pointer}
+    .submit-btn:hover{background:#db2777}
+    .success-message{color:green;font-weight:600;margin-top:10px}
 
     @media (max-width:768px){
       nav ul{display:none;flex-direction:column;gap:10px;background:var(--card);position:absolute;top:64px;right:20px;padding:12px;border:1px solid #ddd;border-radius:8px}
@@ -60,7 +75,7 @@
       .tab{width:100%;justify-content:flex-start}
     }
   </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-yH3Hno0RvrRZtGJPD7WvyaManIeZDV4xQdlqzTeWY5AvzkdxlIo0NGdisz8Iky3Uczdlz7YT1Do1B4ezgmO6+g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
   <header>
@@ -82,6 +97,7 @@
           <li><a href="#" class="active">Início</a></li>
         </ul>
       </nav>
+      <button class="cta-nav" id="openModal">🎓 Inscreva-se</button>
       <button id="dark-toggle" class="dark-toggle">🌙</button>
     </div>
   </header>
@@ -101,14 +117,15 @@
 
       <div id="publico" class="tab-content active">
         <h2><i class="fa-solid fa-users"></i> Público-alvo</h2>
-        <p>A principal procura do nosso curso é por futuros donos de confeitarias e donas de casa, mas aceitamos todos com o mesmo carinho!</p>
-        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1000&fit=crop" alt="Confeitaria" style="width:100%;border-radius:10px"/>
+        <p>Nosso curso é pensado para apaixonados por confeitaria, desde donas de casa e iniciantes até futuros empreendedores que desejam abrir sua própria doceria. Aqui você encontra o espaço perfeito para transformar sua paixão por doces em um verdadeiro talento profissional.</p>
+        <p>Quer aprender a criar sobremesas irresistíveis, encantar clientes e até ganhar uma renda extra? Então você está no lugar certo!</p>
+        <img src="https://images.unsplash.com/photo-1609181205070-ead00f98e7f0?w=1000&fit=crop" alt="Cupcakes deliciosos" style="width:100%;border-radius:10px;margin-top:15px"/>
+        <button class="cta-button" id="openModal2">🎓 Quero me inscrever</button>
       </div>
 
       <div id="objetivos" class="tab-content">
         <h2><i class="fa-solid fa-bullseye"></i> Objetivos</h2>
         <p>Ensinar os conceitos da confeitaria e receitas deliciosas; incentivar a criatividade para criação de receitas próprias e crescimento na vida de confeiteiro.</p>
-        <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=1000&fit=crop" alt="Objetivos do curso" style="width:100%;border-radius:10px"/>
       </div>
 
       <div id="conteudos" class="tab-content">
@@ -121,7 +138,6 @@
           <li>Apresentação de pratos</li>
           <li>Como vender seu produto</li>
         </ul>
-        <img src="https://images.unsplash.com/photo-1609750617174-5f64b5e5d7c5?w=1000&fit=crop" alt="Conteúdos" style="width:100%;border-radius:10px"/>
       </div>
 
       <div id="atividades" class="tab-content">
@@ -135,19 +151,16 @@
             <li><strong>Avançado:</strong> sobremesas elaboradas e técnicas de vendas</li>
           </ul>
         </div>
-        <img src="https://images.unsplash.com/photo-1617196039897-3bd9e8e8e79e?w=1000&fit=crop" alt="Atividades" style="width:100%;border-radius:10px"/>
       </div>
 
       <div id="avaliacao" class="tab-content">
         <h2><i class="fa-solid fa-clipboard-check"></i> Formas de Avaliação</h2>
         <p>Fóruns online para dúvidas e melhorias; frequência, empenho e feedbacks dos alunos; autoavaliação para evolução contínua.</p>
-        <img src="https://images.unsplash.com/photo-1612250504595-9d6f5bf86de1?w=1000&fit=crop" alt="Avaliação" style="width:100%;border-radius:10px"/>
       </div>
 
       <div id="investimento" class="tab-content">
         <h2><i class="fa-solid fa-coins"></i> Investimento</h2>
         <p>O valor do curso é <strong>R$ 260,00</strong>, pago por débito, crédito, boleto ou Pix.</p>
-        <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?w=1000&fit=crop" alt="Investimento" style="width:100%;border-radius:10px"/>
       </div>
 
       <div id="progresso" class="tab-content">
@@ -161,7 +174,6 @@
           <p>Avançado</p>
           <div class="progress-bar"><div class="progress" style="width:10%"></div></div>
         </div>
-        <img src="https://images.unsplash.com/photo-1589307004173-3c9525f3b4d5?w=1000&fit=crop" alt="Progresso" style="width:100%;border-radius:10px"/>
       </div>
 
       <div id="autores" class="tab-content">
@@ -197,6 +209,21 @@
     </footer>
   </main>
 
+  <!-- Modal -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <h2>Formulário de Inscrição</h2>
+      <form id="inscricaoForm">
+        <input type="text" placeholder="Nome completo" required>
+        <input type="email" placeholder="E-mail" required>
+        <input type="tel" placeholder="Telefone (opcional)">
+        <button type="submit" class="submit-btn">Enviar inscrição</button>
+      </form>
+      <div id="successMsg" class="success-message" style="display:none">✅ Inscrição enviada com sucesso!</div>
+    </div>
+  </div>
+
   <script>
     const tabs = document.querySelectorAll('.tab');
     const contents = document.querySelectorAll('.tab-content');
@@ -224,6 +251,24 @@
       document.body.classList.toggle('dark');
       darkToggle.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
     });
-  </script>
-</body>
-</html>
+
+    // Modal inscrição
+    const modal = document.getElementById("myModal");
+    const openModal = document.getElementById("openModal");
+    const openModal2 = document.getElementById("openModal2");
+    const closeModal = document.getElementById("closeModal");
+    const form = document.getElementById("inscricaoForm");
+    const successMsg = document.getElementById("successMsg");
+
+    openModal.onclick = () => {modal.style.display = "block";}
+    openModal2.onclick = () => {modal.style.display = "block";}
+    closeModal.onclick = () => {modal.style.display = "none";}
+
+    window.onclick = (event) => {if(event.target == modal){modal.style.display = "none";}}
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      successMsg.style.display = "block";
+      form.reset();
+    });
+  </script
