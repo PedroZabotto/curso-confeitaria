@@ -6,31 +6,49 @@
   <title>Curso de Confeitaria</title>
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3515/3515261.png" type="image/png">
   <style>
-    :root{--bg:#f9fafb;--card:#ffffff;--muted:#555;--accent:#ec4899}
+    :root{
+      --bg:#f9fafb;
+      --card:#ffffff;
+      --muted:#555;
+      --accent:#ec4899;
+      --text:#111;
+    }
+    body.dark{
+      --bg:#111827;
+      --card:#1f2937;
+      --muted:#9ca3af;
+      --accent:#f472b6;
+      --text:#f9fafb;
+    }
     *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;background:var(--bg);color:#111}
-    header{background:var(--card);border-bottom:1px solid #ddd;position:sticky;top:0;z-index:50}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;background:var(--bg);color:var(--text);transition:background .4s,color .4s}
+    header{background:var(--card);border-bottom:1px solid #ddd;position:sticky;top:0;z-index:50;transition:background .4s}
     .container{max-width:1100px;margin:0 auto;padding:20px}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
     .brand{display:flex;gap:12px;align-items:center}
     .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#f472b6);display:grid;place-items:center;font-weight:700;color:#fff}
     nav ul{display:flex;gap:10px;list-style:none;padding:0;margin:0}
-    nav a{color:#333;text-decoration:none;padding:8px 12px;border-radius:6px;font-weight:600}
+    nav a{color:var(--text);text-decoration:none;padding:8px 12px;border-radius:6px;font-weight:600;transition:background .3s}
     nav a.active, nav a:hover{background:#f3f4f6}
+    body.dark nav a.active, body.dark nav a:hover{background:#374151}
+    .menu-toggle{display:none;flex-direction:column;gap:4px;cursor:pointer}
+    .menu-toggle span{width:24px;height:3px;background:var(--text);border-radius:3px;transition:background .3s}
+    .dark-toggle{cursor:pointer;border:none;background:var(--accent);color:#fff;padding:6px 12px;border-radius:6px;font-weight:600;margin-left:10px}
     main{padding:30px 0}
-    .card{background:var(--card);padding:20px;border-radius:12px;border:1px solid #ddd}
+    .card{background:var(--card);padding:20px;border-radius:12px;border:1px solid #ddd;transition:background .4s}
     h1,h2,h3{margin-top:0}
     p.lead{color:var(--muted)}
     .tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
-    .tab{padding:10px 16px;border-radius:8px;border:1px solid #ddd;background:#f3f4f6;cursor:pointer;font-weight:600;display:flex;align-items:center;gap:6px}
+    .tab{padding:10px 16px;border-radius:8px;border:1px solid #ddd;background:#f3f4f6;cursor:pointer;font-weight:600;display:flex;align-items:center;gap:6px;transition:background .3s,color .3s}
     .tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
-    .tab-content{display:none}
-    .tab-content.active{display:block}
+    body.dark .tab{background:#374151;border-color:#4b5563;color:#e5e7eb}
+    .tab-content{display:none;opacity:0;transition:opacity .6s ease-in-out}
+    .tab-content.active{display:block;opacity:1}
     .tab i{font-size:16px}
     .carousel{position:relative;overflow:hidden;border-radius:12px;margin-top:14px}
-    .carousel img{width:100%;display:none;border-radius:12px}
-    .carousel img.active{display:block}
-    .carousel-controls{position:absolute;top:50%;left:0;right:0;display:flex;justify-content:space-between;transform:translateY(-50%);padding:0 10px}
+    .carousel img{width:100%;border-radius:12px;opacity:0;position:absolute;top:0;left:0;transition:opacity 1s ease-in-out}
+    .carousel img.active{opacity:1;position:relative}
+    .carousel-controls{position:absolute;top:50%;left:0;right:0;display:flex;justify-content:space-between;transform:translateY(-50%);padding:0 10px;z-index:10}
     .carousel button{background:rgba(0,0,0,0.4);border:none;color:#fff;padding:8px 12px;border-radius:6px;cursor:pointer}
     .authors-list{display:flex;flex-direction:column;gap:8px}
     .author{display:flex;align-items:center;gap:12px}
@@ -38,6 +56,14 @@
     .progress-bar{background:#e5e7eb;border-radius:10px;overflow:hidden;height:18px;margin:8px 0}
     .progress{background:var(--accent);height:100%;width:40%;transition:width .3s}
     footer{margin-top:28px;text-align:center;color:var(--muted);font-size:13px}
+
+    @media (max-width:768px){
+      nav ul{display:none;flex-direction:column;gap:10px;background:var(--card);position:absolute;top:64px;right:20px;padding:12px;border:1px solid #ddd;border-radius:8px}
+      nav ul.show{display:flex}
+      .menu-toggle{display:flex}
+      .tabs{flex-direction:column}
+      .tab{width:100%;justify-content:flex-start}
+    }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-yH3Hno0RvrRZtGJPD7WvyaManIeZDV4xQdlqzTeWY5AvzkdxlIo0NGdisz8Iky3Uczdlz7YT1Do1B4ezgmO6+g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -51,11 +77,17 @@
           <div style="font-size:13px;color:var(--muted)">Do básico ao avançado</div>
         </div>
       </div>
+      <div class="menu-toggle" id="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
       <nav>
-        <ul>
+        <ul id="menu">
           <li><a href="#" class="active">Início</a></li>
         </ul>
       </nav>
+      <button id="dark-toggle" class="dark-toggle">🌙</button>
     </div>
   </header>
 
@@ -76,9 +108,9 @@
         <h2><i class="fa-solid fa-users"></i> Público-alvo</h2>
         <p>A principal procura do nosso curso é por futuros donos de confeitarias e donas de casa, mas aceitamos todos com o mesmo carinho!</p>
         <div class="carousel">
-          <img src="https://source.unsplash.com/800x300/?bakery" alt="Confeitaria" class="active"/>
-          <img src="https://source.unsplash.com/800x300/?pastry" alt="Doces e sobremesas"/>
-          <img src="https://source.unsplash.com/800x300/?cake" alt="Bolo confeitado"/>
+          <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&h=300&fit=crop" alt="Confeitaria" class="active"/>
+          <img src="https://images.unsplash.com/photo-1605475128013-4e5e2d7c12e8?w=800&h=300&fit=crop" alt="Doces e sobremesas"/>
+          <img src="https://images.unsplash.com/photo-1589307004173-3c9525f3b4d5?w=800&h=300&fit=crop" alt="Bolo confeitado"/>
           <div class="carousel-controls">
             <button id="prev">❮</button>
             <button id="next">❯</button>
@@ -89,7 +121,7 @@
       <div id="objetivos" class="tab-content">
         <h2><i class="fa-solid fa-bullseye"></i> Objetivos</h2>
         <p>Ensinar os conceitos da confeitaria e receitas deliciosas; incentivar a criatividade para criação de receitas próprias e crescimento na vida de confeiteiro.</p>
-        <img src="https://source.unsplash.com/800x300/?cupcake" alt="Objetivos do curso" style="width:100%;border-radius:10px"/>
+        <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=800&h=300&fit=crop" alt="Objetivos do curso" style="width:100%;border-radius:10px"/>
       </div>
 
       <div id="conteudos" class="tab-content">
@@ -102,7 +134,7 @@
           <li>Apresentação de pratos</li>
           <li>Como vender seu produto</li>
         </ul>
-        <img src="https://source.unsplash.com/800x300/?baking" alt="Conteúdos" style="width:100%;border-radius:10px"/>
+        <img src="https://images.unsplash.com/photo-1609750617174-5f64b5e5d7c5?w=800&h=300&fit=crop" alt="Conteúdos" style="width:100%;border-radius:10px"/>
       </div>
 
       <div id="atividades" class="tab-content">
@@ -116,19 +148,19 @@
             <li><strong>Avançado:</strong> sobremesas elaboradas e técnicas de vendas</li>
           </ul>
         </div>
-        <img src="https://source.unsplash.com/800x300/?cookies" alt="Atividades" style="width:100%;border-radius:10px"/>
+        <img src="https://images.unsplash.com/photo-1617196039897-3bd9e8e8e79e?w=800&h=300&fit=crop" alt="Atividades" style="width:100%;border-radius:10px"/>
       </div>
 
       <div id="avaliacao" class="tab-content">
         <h2><i class="fa-solid fa-clipboard-check"></i> Formas de Avaliação</h2>
         <p>Fóruns online para dúvidas e melhorias; frequência, empenho e feedbacks dos alunos; autoavaliação para evolução contínua.</p>
-        <img src="https://source.unsplash.com/800x300/?students,baking" alt="Avaliação" style="width:100%;border-radius:10px"/>
+        <img src="https://images.unsplash.com/photo-1612250504595-9d6f5bf86de1?w=800&h=300&fit=crop" alt="Avaliação" style="width:100%;border-radius:10px"/>
       </div>
 
       <div id="investimento" class="tab-content">
         <h2><i class="fa-solid fa-coins"></i> Investimento</h2>
         <p>O valor do curso é <strong>R$ 260,00</strong>, pago por débito, crédito, boleto ou Pix.</p>
-        <img src="https://source.unsplash.com/800x300/?dessert,coffee" alt="Investimento" style="width:100%;border-radius:10px"/>
+        <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?w=800&h=300&fit=crop" alt="Investimento" style="width:100%;border-radius:10px"/>
       </div>
 
       <div id="progresso" class="tab-content">
@@ -186,7 +218,8 @@
         tabs.forEach(t => t.classList.remove('active'));
         contents.forEach(c => c.classList.remove('active'));
         tab.classList.add('active');
-        document.getElementById(tab.dataset.tab).classList.add('active');
+        const target = document.getElementById(tab.dataset.tab);
+        target.classList.add('active');
       });
     });
 
@@ -216,6 +249,20 @@
       index = (index + 1) % images.length;
       showImage(index);
     },4000);
+
+    // Menu mobile
+    const menuToggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+    menuToggle.addEventListener('click',()=>{
+      menu.classList.toggle('show');
+    });
+
+    // Dark mode
+    const darkToggle = document.getElementById('dark-toggle');
+    darkToggle.addEventListener('click',()=>{
+      document.body.classList.toggle('dark');
+      darkToggle.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+    });
   </script>
 </body>
-</html>
+</
