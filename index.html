@@ -5,66 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Curso de Confeitaria</title>
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3515/3515261.png" type="image/png">
-  <style>
-    :root{
-      --bg:#f9fafb;
-      --card:#ffffff;
-      --muted:#555;
-      --accent:#ec4899;
-      --text:#111;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;background:var(--bg);color:var(--text)}
-    header{background:var(--card);border-bottom:1px solid #ddd;position:sticky;top:0;z-index:50}
-    .container{max-width:1100px;margin:0 auto;padding:20px}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .brand{display:flex;gap:12px;align-items:center}
-    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#f472b6);display:grid;place-items:center;font-weight:700;color:#fff}
-    nav ul{display:flex;gap:10px;list-style:none;padding:0;margin:0;align-items:center}
-    nav a{color:var(--text);text-decoration:none;padding:8px 12px;border-radius:6px;font-weight:600;transition:background .3s}
-    nav a.active, nav a:hover{background:#f3f4f6}
-    .menu-toggle{display:none;flex-direction:column;gap:4px;cursor:pointer}
-    .menu-toggle span{width:24px;height:3px;background:var(--text);border-radius:3px}
-    .cta-nav{background:var(--accent);color:#fff;padding:8px 14px;border-radius:8px;font-weight:600;text-decoration:none;margin-left:10px;transition:background .3s;cursor:pointer;border:none}
-    .cta-nav:hover{background:#db2777}
-    main{padding:30px 0}
-    .card{background:var(--card);padding:20px;border-radius:12px;border:1px solid #ddd}
-    h1,h2,h3{margin-top:0}
-    p.lead{color:var(--muted)}
-    .tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
-    .tab{padding:10px 16px;border-radius:8px;border:1px solid #ddd;background:#f3f4f6;cursor:pointer;font-weight:600;display:flex;align-items:center;gap:6px;transition:background .3s,color .3s}
-    .tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
-    .tab-content{display:none}
-    .tab-content.active{display:block}
-    .tab i{font-size:16px}
-    .authors-list{display:flex;flex-direction:column;gap:8px}
-    .author{display:flex;align-items:center;gap:12px}
-    .avatar{width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,#34d399,#60a5fa);display:grid;place-items:center;font-weight:700;color:#052028}
-    .progress-bar{background:#e5e7eb;border-radius:10px;overflow:hidden;height:18px;margin:8px 0}
-    .progress{background:var(--accent);height:100%;width:40%}
-    .cta-button{display:inline-block;margin-top:18px;padding:12px 20px;background:var(--accent);color:#fff;font-weight:600;border-radius:8px;text-decoration:none;transition:background .3s;cursor:pointer;border:none}
-    .cta-button:hover{background:#db2777}
-    footer{margin-top:28px;text-align:center;color:var(--muted);font-size:13px}
-
-    /* Modal */
-    .modal{display:none;position:fixed;z-index:100;left:0;top:0;width:100%;height:100%;overflow:auto;background:rgba(0,0,0,0.6)}
-    .modal-content{background:var(--card);margin:10% auto;padding:20px;border-radius:12px;max-width:400px;color:var(--text)}
-    .modal-content h2{margin-top:0}
-    .close{color:var(--muted);float:right;font-size:22px;font-weight:bold;cursor:pointer}
-    .modal form{display:flex;flex-direction:column;gap:12px;margin-top:10px}
-    .modal input{padding:10px;border:1px solid #ccc;border-radius:6px}
-    .submit-btn{background:var(--accent);color:#fff;padding:10px;border:none;border-radius:6px;font-weight:600;cursor:pointer}
-    .submit-btn:hover{background:#db2777}
-    .success-message{color:green;font-weight:600;margin-top:10px}
-
-    @media (max-width:768px){
-      nav ul{display:none;flex-direction:column;gap:10px;background:var(--card);position:absolute;top:64px;right:20px;padding:12px;border:1px solid #ddd;border-radius:8px}
-      nav ul.show{display:flex}
-      .menu-toggle{display:flex}
-      .tabs{flex-direction:column}
-      .tab{width:100%;justify-content:flex-start}
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
@@ -78,9 +19,7 @@
         </div>
       </div>
       <div class="menu-toggle" id="menu-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </div>
       <nav>
         <ul id="menu">
@@ -106,15 +45,16 @@
 
       <div id="publico" class="tab-content active">
         <h2><i class="fa-solid fa-users"></i> Público-alvo</h2>
-        <p>Nosso curso é pensado para apaixonados por confeitaria, desde donas de casa e iniciantes até futuros empreendedores que desejam abrir sua própria doceria. Aqui você encontra o espaço perfeito para transformar sua paixão por doces em um verdadeiro talento profissional.</p>
+        <p>Nosso curso é pensado para apaixonados por confeitaria, desde iniciantes até futuros empreendedores.</p>
         <p>Quer aprender a criar sobremesas irresistíveis, encantar clientes e até ganhar uma renda extra? Então você está no lugar certo!</p>
-        <img src="https://images.unsplash.com/photo-1599785209794-29a8136a3b7e?w=1000&fit=crop" alt="Cupcakes decorados" style="width:100%;border-radius:10px;margin-top:15px"/>
+        <img src="https://images.unsplash.com/photo-1599785209794-29a8136a3b7e?w=1000&fit=crop" alt="Cupcakes decorados"/>
         <button class="cta-button" id="openModal2">🎓 Quero me inscrever</button>
       </div>
 
       <div id="objetivos" class="tab-content">
         <h2><i class="fa-solid fa-bullseye"></i> Objetivos</h2>
-        <p>Ensinar os conceitos da confeitaria e receitas deliciosas; incentivar a criatividade para criação de receitas próprias e crescimento na vida de confeiteiro.</p>
+        <p>Ensinar técnicas de confeitaria, incentivar a criatividade e o crescimento profissional.</p>
+        <img src="https://images.unsplash.com/photo-1623241176016-c30e2a1ef7d9?w=1000&fit=crop" alt="Confeiteira preparando bolo"/>
       </div>
 
       <div id="conteudos" class="tab-content">
@@ -127,29 +67,25 @@
           <li>Apresentação de pratos</li>
           <li>Como vender seu produto</li>
         </ul>
+        <img src="https://images.unsplash.com/photo-1627308595216-439c00ade3e5?w=1000&fit=crop" alt="Utensílios de confeitaria"/>
       </div>
 
       <div id="atividades" class="tab-content">
         <h2><i class="fa-solid fa-list-check"></i> Atividades</h2>
-        <p>O curso funciona por meio de aulas gravadas, textos teóricos e módulos de receitas (básico, intermediário e avançado).</p>
-        <div style="margin-top:14px">
-          <h3>Módulos</h3>
-          <ul>
-            <li><strong>Básico:</strong> bolos simples, utensílios e mise en place</li>
-            <li><strong>Intermediário:</strong> recheios, coberturas e decoração</li>
-            <li><strong>Avançado:</strong> sobremesas elaboradas e técnicas de vendas</li>
-          </ul>
-        </div>
+        <p>Aulas gravadas, textos teóricos e módulos práticos: básico, intermediário e avançado.</p>
+        <img src="https://images.unsplash.com/photo-1630699147855-bf2b6bc3a1ad?w=1000&fit=crop" alt="Alunos decorando bolos"/>
       </div>
 
       <div id="avaliacao" class="tab-content">
         <h2><i class="fa-solid fa-clipboard-check"></i> Formas de Avaliação</h2>
-        <p>Fóruns online para dúvidas e melhorias; frequência, empenho e feedbacks dos alunos; autoavaliação para evolução contínua.</p>
+        <p>Fóruns online, feedbacks, frequência e autoavaliação.</p>
+        <img src="https://images.unsplash.com/photo-1601979031053-3c60b6b7d5c8?w=1000&fit=crop" alt="Bolo confeitado"/>
       </div>
 
       <div id="investimento" class="tab-content">
         <h2><i class="fa-solid fa-coins"></i> Investimento</h2>
         <p>O valor do curso é <strong>R$ 260,00</strong>, pago por débito, crédito, boleto ou Pix.</p>
+        <img src="https://images.unsplash.com/photo-1605478904298-1d6e2f0db981?w=1000&fit=crop" alt="Docinhos para venda"/>
       </div>
 
       <div id="progresso" class="tab-content">
@@ -163,39 +99,20 @@
           <p>Avançado</p>
           <div class="progress-bar"><div class="progress" style="width:10%"></div></div>
         </div>
+        <img src="https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=1000&fit=crop" alt="Macarons coloridos"/>
       </div>
 
       <div id="autores" class="tab-content">
         <h2><i class="fa-solid fa-pen-nib"></i> Autores</h2>
         <div class="authors-list">
-          <div class="author">
-            <div class="avatar">GM</div>
-            <div>
-              <div style="font-weight:700">Giovana Mathias</div>
-              <div style="font-size:13px;color:var(--muted)">Autor</div>
-            </div>
-          </div>
-          <div class="author">
-            <div class="avatar">JL</div>
-            <div>
-              <div style="font-weight:700">Jéssica Lopes</div>
-              <div style="font-size:13px;color:var(--muted)">Autor</div>
-            </div>
-          </div>
-          <div class="author">
-            <div class="avatar">PH</div>
-            <div>
-              <div style="font-weight:700">Pedro Henrique Zaboto Aporta</div>
-              <div style="font-size:13px;color:var(--muted)">Autor</div>
-            </div>
-          </div>
+          <div class="author"><div class="avatar">GM</div><div><div style="font-weight:700">Giovana Mathias</div><div>Autor</div></div></div>
+          <div class="author"><div class="avatar">JL</div><div><div style="font-weight:700">Jéssica Lopes</div><div>Autor</div></div></div>
+          <div class="author"><div class="avatar">PH</div><div><div style="font-weight:700">Pedro Henrique Zaboto Aporta</div><div>Autor</div></div></div>
         </div>
       </div>
     </div>
 
-    <footer>
-      © 2025 Curso de Confeitaria — Todos os direitos reservados.
-    </footer>
+    <footer>© 2025 Curso de Confeitaria — Todos os direitos reservados.</footer>
   </main>
 
   <!-- Modal -->
@@ -213,46 +130,6 @@
     </div>
   </div>
 
-  <script>
-    const tabs = document.querySelectorAll('.tab');
-    const contents = document.querySelectorAll('.tab-content');
-
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        tabs.forEach(t => t.classList.remove('active'));
-        contents.forEach(c => c.classList.remove('active'));
-        tab.classList.add('active');
-        const target = document.getElementById(tab.dataset.tab);
-        target.classList.add('active');
-      });
-    });
-
-    // Menu mobile
-    const menuToggle = document.getElementById('menu-toggle');
-    const menu = document.getElementById('menu');
-    menuToggle.addEventListener('click',()=>{
-      menu.classList.toggle('show');
-    });
-
-    // Modal inscrição
-    const modal = document.getElementById("myModal");
-    const openModal = document.getElementById("openModal");
-    const openModal2 = document.getElementById("openModal2");
-    const closeModal = document.getElementById("closeModal");
-    const form = document.getElementById("inscricaoForm");
-    const successMsg = document.getElementById("successMsg");
-
-    openModal.onclick = () => {modal.style.display = "block";}
-    openModal2.onclick = () => {modal.style.display = "block";}
-    closeModal.onclick = () => {modal.style.display = "none";}
-
-    window.onclick = (event) => {if(event.target == modal){modal.style.display = "none";}}
-
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      successMsg.style.display = "block";
-      form.reset();
-    });
-  </script>
+  <script src="script.js" defer></script>
 </body>
 </html>
