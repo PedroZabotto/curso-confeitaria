@@ -45,11 +45,6 @@
     .tab-content{display:none;opacity:0;transition:opacity .6s ease-in-out}
     .tab-content.active{display:block;opacity:1}
     .tab i{font-size:16px}
-    .carousel{position:relative;overflow:hidden;border-radius:12px;margin-top:14px}
-    .carousel img{width:100%;border-radius:12px;opacity:0;position:absolute;top:0;left:0;transition:opacity 1s ease-in-out}
-    .carousel img.active{opacity:1;position:relative}
-    .carousel-controls{position:absolute;top:50%;left:0;right:0;display:flex;justify-content:space-between;transform:translateY(-50%);padding:0 10px;z-index:10}
-    .carousel button{background:rgba(0,0,0,0.4);border:none;color:#fff;padding:8px 12px;border-radius:6px;cursor:pointer}
     .authors-list{display:flex;flex-direction:column;gap:8px}
     .author{display:flex;align-items:center;gap:12px}
     .avatar{width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,#34d399,#60a5fa);display:grid;place-items:center;font-weight:700;color:#052028}
@@ -107,21 +102,13 @@
       <div id="publico" class="tab-content active">
         <h2><i class="fa-solid fa-users"></i> Público-alvo</h2>
         <p>A principal procura do nosso curso é por futuros donos de confeitarias e donas de casa, mas aceitamos todos com o mesmo carinho!</p>
-        <div class="carousel">
-          <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&h=300&fit=crop" alt="Confeitaria" class="active"/>
-          <img src="https://images.unsplash.com/photo-1605475128013-4e5e2d7c12e8?w=800&h=300&fit=crop" alt="Doces e sobremesas"/>
-          <img src="https://images.unsplash.com/photo-1589307004173-3c9525f3b4d5?w=800&h=300&fit=crop" alt="Bolo confeitado"/>
-          <div class="carousel-controls">
-            <button id="prev">❮</button>
-            <button id="next">❯</button>
-          </div>
-        </div>
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1000&fit=crop" alt="Confeitaria" style="width:100%;border-radius:10px"/>
       </div>
 
       <div id="objetivos" class="tab-content">
         <h2><i class="fa-solid fa-bullseye"></i> Objetivos</h2>
         <p>Ensinar os conceitos da confeitaria e receitas deliciosas; incentivar a criatividade para criação de receitas próprias e crescimento na vida de confeiteiro.</p>
-        <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=800&h=300&fit=crop" alt="Objetivos do curso" style="width:100%;border-radius:10px"/>
+        <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=1000&fit=crop" alt="Objetivos do curso" style="width:100%;border-radius:10px"/>
       </div>
 
       <div id="conteudos" class="tab-content">
@@ -134,7 +121,7 @@
           <li>Apresentação de pratos</li>
           <li>Como vender seu produto</li>
         </ul>
-        <img src="https://images.unsplash.com/photo-1609750617174-5f64b5e5d7c5?w=800&h=300&fit=crop" alt="Conteúdos" style="width:100%;border-radius:10px"/>
+        <img src="https://images.unsplash.com/photo-1609750617174-5f64b5e5d7c5?w=1000&fit=crop" alt="Conteúdos" style="width:100%;border-radius:10px"/>
       </div>
 
       <div id="atividades" class="tab-content">
@@ -148,19 +135,19 @@
             <li><strong>Avançado:</strong> sobremesas elaboradas e técnicas de vendas</li>
           </ul>
         </div>
-        <img src="https://images.unsplash.com/photo-1617196039897-3bd9e8e8e79e?w=800&h=300&fit=crop" alt="Atividades" style="width:100%;border-radius:10px"/>
+        <img src="https://images.unsplash.com/photo-1617196039897-3bd9e8e8e79e?w=1000&fit=crop" alt="Atividades" style="width:100%;border-radius:10px"/>
       </div>
 
       <div id="avaliacao" class="tab-content">
         <h2><i class="fa-solid fa-clipboard-check"></i> Formas de Avaliação</h2>
         <p>Fóruns online para dúvidas e melhorias; frequência, empenho e feedbacks dos alunos; autoavaliação para evolução contínua.</p>
-        <img src="https://images.unsplash.com/photo-1612250504595-9d6f5bf86de1?w=800&h=300&fit=crop" alt="Avaliação" style="width:100%;border-radius:10px"/>
+        <img src="https://images.unsplash.com/photo-1612250504595-9d6f5bf86de1?w=1000&fit=crop" alt="Avaliação" style="width:100%;border-radius:10px"/>
       </div>
 
       <div id="investimento" class="tab-content">
         <h2><i class="fa-solid fa-coins"></i> Investimento</h2>
         <p>O valor do curso é <strong>R$ 260,00</strong>, pago por débito, crédito, boleto ou Pix.</p>
-        <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?w=800&h=300&fit=crop" alt="Investimento" style="width:100%;border-radius:10px"/>
+        <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?w=1000&fit=crop" alt="Investimento" style="width:100%;border-radius:10px"/>
       </div>
 
       <div id="progresso" class="tab-content">
@@ -174,6 +161,7 @@
           <p>Avançado</p>
           <div class="progress-bar"><div class="progress" style="width:10%"></div></div>
         </div>
+        <img src="https://images.unsplash.com/photo-1589307004173-3c9525f3b4d5?w=1000&fit=crop" alt="Progresso" style="width:100%;border-radius:10px"/>
       </div>
 
       <div id="autores" class="tab-content">
@@ -223,33 +211,6 @@
       });
     });
 
-    // Carrossel
-    const carousel = document.querySelector('.carousel');
-    const images = carousel.querySelectorAll('img');
-    const prevBtn = document.getElementById('prev');
-    const nextBtn = document.getElementById('next');
-    let index = 0;
-
-    function showImage(i){
-      images.forEach(img => img.classList.remove('active'));
-      images[i].classList.add('active');
-    }
-
-    prevBtn.addEventListener('click',()=>{
-      index = (index - 1 + images.length) % images.length;
-      showImage(index);
-    });
-
-    nextBtn.addEventListener('click',()=>{
-      index = (index + 1) % images.length;
-      showImage(index);
-    });
-
-    setInterval(()=>{
-      index = (index + 1) % images.length;
-      showImage(index);
-    },4000);
-
     // Menu mobile
     const menuToggle = document.getElementById('menu-toggle');
     const menu = document.getElementById('menu');
@@ -265,4 +226,4 @@
     });
   </script>
 </body>
-</
+</html>
